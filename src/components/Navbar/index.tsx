@@ -44,8 +44,8 @@ export default function NavBar() {
                           href={item.href}
                           className={classNames(
                             item.current
-                              ? "bg-rose-300 text-white font-bold"
-                              : "text-gray-500 hover:bg-rose-300 hover:text-white font-bold",
+                              ? "text-rose-500 font-bold"
+                              : "text-gray-500 hover:text-rose-500 font-bold",
                             "px-3 py-2 rounded-md text-sm font-medium"
                           )}
                           aria-current={item.current ? "page" : undefined}

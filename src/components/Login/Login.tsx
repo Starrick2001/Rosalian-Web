@@ -1,11 +1,15 @@
-import { LockClosedIcon } from "@heroicons/react/20/solid";
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGoogle, faFacebook } from "@fortawesome/free-brands-svg-icons";
-import { useAuth0 } from "@auth0/auth0-react";
+import { LockClosedIcon } from '@heroicons/react/20/solid'
+import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons'
+import { useAuth0 } from '@auth0/auth0-react'
 
-export default function Login() {
-  const { loginWithRedirect } = useAuth0();
+export default function Login (): JSX.Element {
+  const { loginWithRedirect } = useAuth0()
+
+  const errorHandler = async (err: string): Promise<void> => {
+    alert('error: ' + err)
+  }
 
   return (
     <React.Fragment>
@@ -26,8 +30,7 @@ export default function Login() {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="h-12 w-auto mx-auto stroke-rose-500"
-            >
+              className="h-12 w-auto mx-auto stroke-rose-500">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -45,12 +48,11 @@ export default function Login() {
             </h2>
             <button
               className="relative py-2 px-4 mb-2 w-full text-center rounded-md bg-slate-200"
-              onClick={() =>
+              onClick={() => {
                 loginWithRedirect({
-                  connection: "facebook",
-                })
-              }
-            >
+                  connection: 'facebook'
+                }).catch(async (err) => await errorHandler(err.message))
+              }}>
               <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                 <FontAwesomeIcon
                   icon={faFacebook}
@@ -62,12 +64,11 @@ export default function Login() {
             </button>
             <button
               className="relative py-2 px-4 mb-2 w-full text-center rounded-md bg-slate-200"
-              onClick={() =>
+              onClick={() => {
                 loginWithRedirect({
-                  connection: "google-oauth2",
-                })
-              }
-            >
+                  connection: 'google-oauth2'
+                }).catch(async (err) => await errorHandler(err.message))
+              }}>
               <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                 <FontAwesomeIcon
                   icon={faGoogle}
@@ -119,10 +120,7 @@ export default function Login() {
                   type="checkbox"
                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                 />
-                <label
-                  htmlFor="remember-me"
-                  className="ml-2 block text-sm text-gray-900"
-                >
+                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
                   Remember me
                 </label>
               </div>
@@ -131,9 +129,8 @@ export default function Login() {
                 <button
                   className="font-medium text-rose-600 hover:text-rose-500"
                   onClick={(e) => {
-                    e.preventDefault();
-                  }}
-                >
+                    e.preventDefault()
+                  }}>
                   Forgot your password?
                 </button>
               </div>
@@ -142,8 +139,7 @@ export default function Login() {
             <div>
               <button
                 type="submit"
-                className="group relative flex w-full justify-center rounded-md border border-transparent bg-rose-600 py-2 px-4 text-sm font-medium text-white hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2"
-              >
+                className="group relative flex w-full justify-center rounded-md border border-transparent bg-rose-600 py-2 px-4 text-sm font-medium text-white hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2">
                 <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                   <LockClosedIcon
                     className="h-5 w-5 text-rose-400 group-hover:text-rose-300"
@@ -157,5 +153,5 @@ export default function Login() {
         </div>
       </div>
     </React.Fragment>
-  );
+  )
 }

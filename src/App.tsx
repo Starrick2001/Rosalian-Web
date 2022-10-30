@@ -1,6 +1,6 @@
 import React from "react";
-import NavBar from "./components/Navbar";
-import Login from "./components/Login";
+import NavBar from "./components/Navbar/Navbar";
+import Login from "./components/Login/Login";
 import { useAuth0 } from "@auth0/auth0-react";
 
 function App() {

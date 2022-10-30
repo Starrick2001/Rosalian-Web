@@ -1,7 +1,12 @@
 import { LockClosedIcon } from "@heroicons/react/20/solid";
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle, faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Login() {
+  const { loginWithRedirect } = useAuth0();
+
   return (
     <React.Fragment>
       {/*
@@ -35,11 +40,45 @@ export default function Login() {
               />
             </svg>
 
-            <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
+            <h2 className="my-4  text-center text-3xl font-bold tracking-tight text-gray-900">
               Sign in to your account
             </h2>
+            <button
+              className="relative py-2 px-4 mb-2 w-full text-center rounded-md bg-slate-200"
+              onClick={() =>
+                loginWithRedirect({
+                  connection: "facebook",
+                })
+              }
+            >
+              <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                <FontAwesomeIcon
+                  icon={faFacebook}
+                  className="h-5 w-5 text-rose-400 group-hover:text-rose-300"
+                  aria-hidden="true"
+                />
+              </span>
+              Sign in via Facebook Account
+            </button>
+            <button
+              className="relative py-2 px-4 mb-2 w-full text-center rounded-md bg-slate-200"
+              onClick={() =>
+                loginWithRedirect({
+                  connection: "google-oauth2",
+                })
+              }
+            >
+              <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                <FontAwesomeIcon
+                  icon={faGoogle}
+                  className="h-5 w-5 text-rose-400 group-hover:text-rose-300"
+                  aria-hidden="true"
+                />
+              </span>
+              Sign in via Google Account
+            </button>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form className="mt-4 space-y-6" action="#" method="POST">
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px rounded-md shadow-sm w-full">
               <div>
@@ -89,12 +128,14 @@ export default function Login() {
               </div>
 
               <div className="text-sm">
-                <a
-                  href="#"
+                <button
                   className="font-medium text-rose-600 hover:text-rose-500"
+                  onClick={(e) => {
+                    e.preventDefault();
+                  }}
                 >
                   Forgot your password?
-                </a>
+                </button>
               </div>
             </div>
 

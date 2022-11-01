@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons'
 import { useAuth0 } from '@auth0/auth0-react'
 
-export default function Login (): JSX.Element {
+const Login: React.FC<{}> = () => {
   const { loginWithRedirect } = useAuth0()
 
   const errorHandler = async (err: string): Promise<void> => {
@@ -155,3 +155,5 @@ export default function Login (): JSX.Element {
     </React.Fragment>
   )
 }
+
+export default Login

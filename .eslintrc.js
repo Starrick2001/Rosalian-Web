@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es2021: true
   },
-  extends: ['plugin:react/recommended', 'standard-with-typescript'],
+  extends: ['plugin:react/recommended', 'standard-with-typescript', 'eslint:recommended'],
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
@@ -13,6 +13,8 @@ module.exports = {
   plugins: ['react'],
   rules: {
     'react/react-in-jsx-scope': 'off',
-    'space-before-function-paren': 'off'
+    'space-before-function-paren': 'off',
+    'multiline-ternary': 'off',
+    'no-console': 'warn'
   }
 }

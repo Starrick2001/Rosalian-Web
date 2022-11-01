@@ -1,8 +1,7 @@
-import { User } from '@auth0/auth0-react'
 import React from 'react'
 import ProductCard from '../../components/ProductCard/ProductCard'
 
-const Home: React.FC<{ user: User }> = ({ user }) => {
+const Home: React.FC<{}> = () => {
   return (
     <div className="container mx-auto mt-8">
       <div className="flex flex-row flex-wrap justify-center">

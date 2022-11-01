@@ -1,14 +1,14 @@
 import React from 'react'
 import NavBar from './components/Navbar/Navbar'
 import Login from './components/Login/Login'
-import { useAuth0, User } from '@auth0/auth0-react'
+import { useAuth0 } from '@auth0/auth0-react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home/Home'
 import Product from './pages/Product/Product'
 import Profile from './pages/Profile/Profile'
 
 const App: React.FC<{}> = () => {
-  const { isAuthenticated, user } = useAuth0()
+  const { isAuthenticated } = useAuth0()
 
   return (
     <BrowserRouter>
@@ -17,7 +17,7 @@ const App: React.FC<{}> = () => {
         {!isAuthenticated ? (
           <Route path="/" element={<Login />} />
         ) : (
-          <Route path="/" element={<Home user={user as User} />} />
+          <Route path="/" element={<Home />} />
         )}
         <Route
           path="/product"

@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-interface productCardProps {
+interface IProductCardProps {
   img: string
   title: string
   rate: number
 }
 
-const ProductCard: React.FC<productCardProps> = (props) => {
+const ProductCard: React.FC<IProductCardProps> = (props) => {
   return (
     <div className="m-2 w-full max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
       <Link to="/product">

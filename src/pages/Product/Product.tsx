@@ -2,7 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import React from 'react'
 import Testimonial from '../../components/Testimonial/Testimonial'
 
-interface productProps {
+interface IProductProps {
   img: string
   title: string
   description: string
@@ -10,7 +10,7 @@ interface productProps {
   price: number
 }
 
-const Product: React.FC<productProps> = (props) => {
+const Product: React.FC<IProductProps> = (props) => {
   const { user } = useAuth0()
 
   return (

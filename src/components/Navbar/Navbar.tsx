@@ -2,19 +2,20 @@ import React, { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useAuth0 } from '@auth0/auth0-react'
+import { Link } from 'react-router-dom'
 
 const navigation = [
-  { name: 'Home', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false }
+  { name: 'Home', href: '/', current: true },
+  { name: 'Team', href: '/', current: false },
+  { name: 'Projects', href: '/', current: false },
+  { name: 'Calendar', href: '/', current: false }
 ]
 
 function classNames (...classes: string[]): string {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function NavBar (): JSX.Element {
+const NavBar: React.FC<{}> = () => {
   const { logout, user, isAuthenticated } = useAuth0()
 
   return (
@@ -46,9 +47,9 @@ export default function NavBar (): JSX.Element {
                   <div className="hidden sm:ml-6 sm:block">
                     <div className="flex space-x-4">
                       {navigation.map((item) => (
-                        <a
+                        <Link
                           key={item.name}
-                          href={item.href}
+                          to={item.href}
                           className={classNames(
                             item.current
                               ? 'text-rose-500 font-bold'
@@ -57,7 +58,7 @@ export default function NavBar (): JSX.Element {
                           )}
                           aria-current={item.current ? 'page' : undefined}>
                           {item.name}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -90,16 +91,16 @@ export default function NavBar (): JSX.Element {
                         <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                           <Menu.Item>
                             {({ active }) => (
-                              <button
+                              <Link to="/profile"
                                 className={classNames(
                                   active ? 'bg-gray-100' : '',
                                   'block px-4 py-2 text-sm text-gray-700 w-full text-start'
                                 )}>
                                 Your Profile
-                              </button>
+                              </Link>
                             )}
                           </Menu.Item>
-                          <Menu.Item>
+                          {/* <Menu.Item>
                             {({ active }) => (
                               <button
                                 className={classNames(
@@ -109,7 +110,7 @@ export default function NavBar (): JSX.Element {
                                 Settings
                               </button>
                             )}
-                          </Menu.Item>
+                          </Menu.Item> */}
                           <Menu.Item>
                             {({ active }) => (
                               <button
@@ -155,3 +156,5 @@ export default function NavBar (): JSX.Element {
     </React.Fragment>
   )
 }
+
+export default NavBar

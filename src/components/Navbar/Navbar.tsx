@@ -15,7 +15,7 @@ function classNames (...classes: string[]): string {
   return classes.filter(Boolean).join(' ')
 }
 
-const NavBar: React.FC<{}> = () => {
+const NavBar: React.FC<unknown> = () => {
   const { logout, user, isAuthenticated } = useAuth0()
 
   return (

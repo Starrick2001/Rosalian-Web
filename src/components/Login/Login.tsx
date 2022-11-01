@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons'
 import { useAuth0 } from '@auth0/auth0-react'
 
-const Login: React.FC<{}> = () => {
+const Login: React.FC<unknown> = () => {
   const { loginWithRedirect } = useAuth0()
 
   const errorHandler = async (err: string): Promise<void> => {

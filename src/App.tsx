@@ -7,7 +7,7 @@ import Home from './pages/Home/Home'
 import Product from './pages/Product/Product'
 import Profile from './pages/Profile/Profile'
 
-const App: React.FC<{}> = () => {
+const App: React.FC<unknown> = () => {
   const { isAuthenticated } = useAuth0()
 
   return (

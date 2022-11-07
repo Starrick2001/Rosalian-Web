@@ -9,7 +9,7 @@ interface IProductCardProps {
 
 const ProductCard: React.FC<IProductCardProps> = (props) => {
   return (
-    <div className="m-2 w-full max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+    <div className="m-2 w-full max-w-sm bg-white rounded-2xl shadow-md dark:bg-gray-800 dark:border-gray-700">
       <Link to="/product">
         <img className="p-8 rounded-t-lg" src={props.img} alt="product image" />
       </Link>
